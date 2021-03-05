@@ -6,8 +6,6 @@ const user = new User();
 const company = new Company();
 const map = new Map('map');
 
-console.log(user);
-
 map.addMarker({
     location: {
         lat: user.location.lat,
@@ -27,4 +25,3 @@ map.addMarker({
         return `<h4>Company Name:${company.name}</h4><p>motto: ${company.catchPhrase}</p>`;
     },
 });
-// map.addMarker({lat: -31.2523, lng: 115.8613});
