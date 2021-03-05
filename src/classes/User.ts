@@ -1,6 +1,7 @@
 import faker from 'faker';
+import {MarkerObj} from './Map';
 
-export class User {
+export class User implements MarkerObj {
     name: string;
     location: {
         lat: number;

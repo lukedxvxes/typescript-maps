@@ -1,6 +1,7 @@
 import faker from 'faker';
+import {MarkerObj} from './Map';
 
-export class Company {
+export class Company implements MarkerObj {
     name: string;
     catchPhrase: string;
     location: {

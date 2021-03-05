@@ -1,4 +1,4 @@
-interface MarkerObj {
+export interface MarkerObj {
     location: {
         lat: number;
         lng: number;
