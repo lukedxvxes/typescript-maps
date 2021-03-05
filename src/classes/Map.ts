@@ -1,6 +1,13 @@
+interface MarkerObj {
+    location: {
+        lat: number;
+        lng: number;
+    };
+    windowContent(): string;
+}
+
 export class Map {
     private googleMap: google.maps.Map;
-    private googleMarkers: google.maps.Marker[];
 
     public mapContainer: Element;
     public mapOptions: {
@@ -22,17 +29,21 @@ export class Map {
         this.googleMap = new google.maps.Map(this.mapContainer, this.mapOptions);
     }
 
-    public addMarker(lat: number, lng: number) {
-        this.googleMarkers = [];
-        this.googleMarkers.push(
-            new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                title: 'new marker',
-            })
-        );
+    public addMarker(markerObj: MarkerObj): void {
+        let lat = markerObj.location.lat;
+        let lng = markerObj.location.lng;
 
-        this.googleMarkers.forEach(marker => {
-            marker.setMap(this.googleMap);
+        const marker = new google.maps.Marker({
+            position: {lat, lng},
+            map: this.googleMap,
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: markerObj.windowContent(),
+        });
+
+        marker.addListener('click', () => {
+            infoWindow.open(this.googleMap, marker);
         });
     }
 }
