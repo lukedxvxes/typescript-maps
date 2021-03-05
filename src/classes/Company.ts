@@ -17,4 +17,8 @@ export class Company {
             lng: parseFloat(faker.address.longitude(115.8, 115.7, 4)),
         };
     }
+
+    windowContent(): string {
+        return `<h4>Company Name:${this.name}</h4><p>motto: ${this.catchPhrase}</p>`;
+    }
 }

@@ -14,4 +14,8 @@ export class User {
             lng: parseFloat(faker.address.longitude(115.8, 115.7, 4)),
         };
     }
+
+    windowContent(): string {
+        return `<h4>User Name:${this.name} </h4>`;
+    }
 }
